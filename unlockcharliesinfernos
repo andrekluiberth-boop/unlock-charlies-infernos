@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Página oficial de mi nivel de Geometry Dash - Charlie's Inferno"
+    >
+
+    <title>Charlie's Inferno | Geometry Dash</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at 50% 0%, #3a0710 0%, #130308 45%, #050507 100%);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* -------------------------
+           FONDO
+        ------------------------- */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+
+            background-image:
+                linear-gradient(
+                    rgba(255, 50, 50, 0.03) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255, 50, 50, 0.03) 1px,
+                    transparent 1px
+                );
+
+            background-size: 50px 50px;
+
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+        /* -------------------------
+           NAVBAR
+        ------------------------- */
+
+        nav {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+            width: 100%;
+
+            height: 70px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: rgba(0, 0, 0, 0.82);
+
+            backdrop-filter: blur(10px);
+
+            border-bottom: 1px solid rgba(255, 50, 50, 0.25);
+
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+
+            text-decoration: none;
+
+            margin: 0 20px;
+
+            font-weight: bold;
+
+            transition: 0.25s;
+        }
+
+        nav a:hover {
+            color: #ff3434;
+
+            text-shadow:
+                0 0 10px #ff3434,
+                0 0 20px #ff3434;
+        }
+
+        /* -------------------------
+           HERO
+        ------------------------- */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 100px 20px 50px;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+        }
+
+        .small-title {
+            color: #ff4848;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: clamp(50px, 9vw, 110px);
+
+            line-height: 0.9;
+
+            font-weight: 1000;
+
+            text-transform: uppercase;
+
+            color: white;
+
+            text-shadow:
+                0 5px 0 #400000,
+                0 0 20px #ff1c1c,
+                0 0 50px rgba(255, 0, 0, 0.5);
+        }
+
+        .subtitle {
+            margin-top: 25px;
+
+            font-size: 20px;
+
+            color: #d0d0d0;
+        }
+
+        .buttons {
+            margin-top: 40px;
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+
+            padding: 15px 28px;
+
+            border-radius: 8px;
+
+            border: 2px solid #ff3030;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            background: #8e0808;
+
+            box-shadow:
+                0 0 10px rgba(255, 0, 0, 0.4);
+
+            transition: 0.25s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+
+            background: #c20d0d;
+
+            box-shadow:
+                0 0 20px rgba(255, 0, 0, 0.8);
+        }
+
+        .button.secondary {
+            background: transparent;
+        }
+
+        /* -------------------------
+           SECCIONES
+        ------------------------- */
+
+        section {
+            width: min(1100px, 92%);
+
+            margin: auto;
+
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 42px;
+
+            margin-bottom: 15px;
+
+            color: white;
+
+            text-shadow:
+                0 0 15px rgba(255, 0, 0, 0.5);
+        }
+
+        .section-description {
+            color: #bdbdbd;
+
+            line-height: 1.7;
+
+            margin-bottom: 40px;
+        }
+
+        /* -------------------------
+           CARD DE LA CANCIÓN
+        ------------------------- */
+
+        .song-card {
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(120, 0, 0, 0.35),
+                    rgba(20, 0, 0, 0.75)
+                );
+
+            border: 1px solid rgba(255, 40, 40, 0.4);
+
+            border-radius: 18px;
+
+            padding: 35px;
+
+            box-shadow:
+                0 0 30px rgba(255, 0, 0, 0.12);
+        }
+
+        .song-name {
+            font-size: 30px;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+        }
+
+        .artist {
+            color: #ff5151;
+
+            margin-bottom: 25px;
+        }
+
+        .nong-warning {
+            background: rgba(255, 40, 40, 0.12);
+
+            border-left: 5px solid #ff3030;
+
+            padding: 20px;
+
+            border-radius: 8px;
+
+            line-height: 1.7;
+        }
+
+        /* -------------------------
+           PASOS
+        ------------------------- */
+
+        .steps {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 1fr));
+
+            gap: 20px;
+        }
+
+        .step {
+            background: rgba(255, 255, 255, 0.04);
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            border-radius: 15px;
+
+            padding: 25px;
+
+            transition: 0.25s;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+
+            border-color: #ff3030;
+
+            box-shadow:
+                0 0 20px rgba(255, 0, 0, 0.15);
+        }
+
+        .step-number {
+            width: 45px;
+            height: 45px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #a20a0a;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            margin-bottom: 18px;
+        }
+
+        .step h3 {
+            margin-bottom: 10px;
+
+            font-size: 21px;
+        }
+
+        .step p {
+            color: #c5c5c5;
+
+            line-height: 1.65;
+        }
+
+        /* -------------------------
+           CAJA IMPORTANTE
+        ------------------------- */
+
+        .important {
+            margin-top: 40px;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            background: #111;
+
+            border: 1px solid #ff3030;
+
+            line-height: 1.7;
+        }
+
+        .important strong {
+            color: #ff4545;
+        }
+
+        /* -------------------------
+           CODIGO
+        ------------------------- */
+
+        code {
+            background: #090909;
+
+            padding: 3px 7px;
+
+            border-radius: 5px;
+
+            color: #ff6969;
+        }
+
+        /* -------------------------
+           TROUBLESHOOTING
+        ------------------------- */
+
+        .faq {
+            display: grid;
+
+            gap: 15px;
+        }
+
+        details {
+            background: rgba(255, 255, 255, 0.04);
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            border-radius: 12px;
+
+            padding: 20px;
+        }
+
+        summary {
+            cursor: pointer;
+
+            font-weight: bold;
+
+            font-size: 18px;
+        }
+
+        details p {
+            margin-top: 15px;
+
+            color: #c7c7c7;
+
+            line-height: 1.7;
+        }
+
+        /* -------------------------
+           FOOTER
+        ------------------------- */
+
+        footer {
+            text-align: center;
+
+            padding: 50px 20px;
+
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+            color: #8f8f8f;
+        }
+
+        /* -------------------------
+           RESPONSIVE
+        ------------------------- */
+
+        @media (max-width: 700px) {
+
+            nav a {
+                margin: 0 7px;
+
+                font-size: 13px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .song-card {
+                padding: 25px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav>
+
+        <a href="#inicio">
+            INICIO
+        </a>
+
+        <a href="#musica">
+            MÚSICA
+        </a>
+
+        <a href="#tutorial">
+            TUTORIAL
+        </a>
+
+        <a href="#problemas">
+            AYUDA
+        </a>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <header class="hero" id="inicio">
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                GEOMETRY DASH LEVEL
+            </div>
+
+            <h1>
+                CHARLIE'S<br>
+                INFERNO
+            </h1>
+
+            <p class="subtitle">
+                Mi nivel de Geometry Dash inspirado en
+                <strong>Charlie’s Inferno</strong>.
+            </p>
+
+            <div class="buttons">
+
+                <a
+                    class="button"
+                    href="#tutorial"
+                >
+                    🎵 INSTALAR LA MÚSICA
+                </a>
+
+                <a
+                    class="button secondary"
+                    href="#musica"
+                >
+                    🔥 VER INFORMACIÓN
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MUSICA
+    ========================== -->
+
+    <section id="musica">
+
+        <h2 class="section-title">
+            🎵 Música del nivel
+        </h2>
+
+        <p class="section-description">
+            Este nivel utiliza una canción que no está disponible
+            directamente como canción normal dentro de Geometry Dash.
+        </p>
+
+
+        <div class="song-card">
+
+            <div class="song-name">
+                Charlie's Inferno
+            </div>
+
+            <div class="artist">
+                That Handsome Devil
+            </div>
+
+            <div class="nong-warning">
+
+                <strong>⚠️ IMPORTANTE — NONG</strong>
+
+                <br><br>
+
+                La canción utilizada por este nivel es un
+                <strong>NONG</strong>.
+
+                <br><br>
+
+                NONG significa
+                <strong>"Not On NewGrounds"</strong>.
+
+                En Geometry Dash, esto significa que el
+                archivo de audio se cambia localmente en el
+                dispositivo del jugador.
+
+                <br><br>
+
+                <strong>
+                    Publicar el nivel NO envía automáticamente
+                    el archivo MP3 a los demás jugadores.
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         TUTORIAL
+    ========================== -->
+
+    <section id="tutorial">
+
+        <h2 class="section-title">
+            🛠️ Cómo instalar la canción
+        </h2>
+
+        <p class="section-description">
+
+            Sigue estos pasos para escuchar la canción correcta
+            mientras juegas el nivel.
+
+        </p>
+
+
+        <div class="steps">
+
+
+            <!-- PASO 1 -->
+
+            <div class="step">
+
+                <div class="step-number">
+                    1
+                </div>
+
+                <h3>
+                    Instala Geode
+                </h3>
+
+                <p>
+
+                    Instala Geode en tu versión compatible
+                    de Geometry Dash.
+
+                    <br><br>
+
+                    Geode permite utilizar mods dentro de
+                    Geometry Dash.
+
+                </p>
+
+            </div>
+
+
+            <!-- PASO 2 -->
+
+            <div class="step">
+
+                <div class="step-number">
+                    2
+                </div>
+
+                <h3>
+                    Instala Jukebox
+                </h3>
+
+                <p>
+
+                    Abre Geometry Dash, entra al menú de
+                    Geode y busca el mod
+
+                    <strong>Jukebox</strong>.
+
+                    <br><br>
+
+                    Instálalo y reinicia el juego si te lo pide.
+
+                </p>
+
+            </div>
+
+
+            <!-- PASO 3 -->
+
+            <div class="step">
+
+                <div class="step-number">
+                    3
+                </div>
+
+                <h3>
+                    Consigue el MP3
+                </h3>
+
+                <p>
+
+                    Necesitas tener una copia del archivo de
+                    audio de
+
+                    <strong>
+                        Charlie's Inferno
+                    </strong>
+
+                    que puedas usar legalmente.
+
+                    <br><br>
+
+                    El archivo debe estar disponible en tu
+                    ordenador para importarlo a Jukebox.
+
+                </p>
+
+            </div>
+
+
+            <!-- PASO 4 -->
+
+            <div class="step">
+
+                <div class="step-number">
+                    4
+                </div>
+
+                <h3>
+                    Abre Jukebox
+                </h3>
+
+                <p>
+
+                    Abre Geometry Dash y entra en la pantalla
+                    del nivel.
+
+                    <br><br>
+
+                    Jukebox puede abrirse desde la interfaz
+                    relacionada con la canción del nivel.
+
+                </p>
+
+            </div>
+
+
+            <!-- PASO 5 -->
+
+            <div class="step">
+
+                <div class="step-number">
+                    5
+                </div>
+
+                <h3>
+                    Añade la canción
+                </h3>
+
+                <p>
+
+                    Dentro de Jukebox utiliza la opción para
+                    añadir/importar una canción local.
+
+                    <br><br>
+
+                    Selecciona tu archivo
+
+                    <code>
+                        Charlies Inferno.mp3
+                    </code>
+
+                    desde el ordenador.
+
+                </p>
+
+            </div>
+
+
+            <!-- PASO 6 -->
+
+            <div class="step">
+
+                <div class="step-number">
+                    6
+                </div>
+
+                <h3>
+                    Selecciona el nivel
+                </h3>
+
+                <p>
+
+                    Vuelve a la página del nivel.
+
+                    <br><br>
+
+                    Abre el menú de Jukebox asociado a la
+                    canción y busca el audio que importaste.
+
+                </p>
+
+            </div>
+
+
+            <!-- PASO 7 -->
+
+            <div class="step">
+
+                <div class="step-number">
+                    7
+                </div>
+
+                <h3>
+                    Haz el cambio
+                </h3>
+
+                <p>
+
+                    Selecciona la canción NONG para que
+                    Jukebox la utilice en lugar de la canción
+                    original del nivel.
+
+                </p>
+
+            </div>
+
+
+            <!-- PASO 8 -->
+
+            <div class="step">
+
+                <div class="step-number">
+                    8
+                </div>
+
+                <h3>
+                    ¡Prueba el nivel!
+                </h3>
+
+                <p>
+
+                    Inicia el nivel.
+
+                    <br><br>
+
+                    Si todo está correctamente configurado,
+                    escucharás
+
+                    <strong>
+                        Charlie's Inferno
+                    </strong>
+
+                    mientras juegas.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="important">
+
+            <strong>
+                🔥 ¿Por qué necesitas hacer esto?
+            </strong>
+
+            <br><br>
+
+            Geometry Dash no descarga automáticamente
+            la canción NONG cuando otra persona juega
+            tu nivel.
+
+            <br><br>
+
+            Por eso cada jugador necesita configurar
+            el audio localmente mediante una herramienta
+            compatible, como Jukebox.
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROBLEMAS
+    ========================== -->
+
+    <section id="problemas">
+
+        <h2 class="section-title">
+            ❓ Problemas frecuentes
+        </h2>
+
+
+        <div class="faq">
+
+
+            <details>
+
+                <summary>
+                    ❌ "No escucho la canción correcta"
+                </summary>
+
+                <p>
+
+                    Comprueba que el archivo MP3 esté
+                    correctamente importado en Jukebox y
+                    que esté seleccionado como la canción
+                    activa para el nivel.
+
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    ❌ "El nivel funciona pero escucho otra canción"
+                </summary>
+
+                <p>
+
+                    Eso significa normalmente que el NONG
+                    todavía no está activo para ese nivel.
+
+                    Abre Jukebox desde la página del nivel
+                    y comprueba la canción seleccionada.
+
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    ❌ "¿Los demás jugadores escucharán automáticamente el MP3?"
+                </summary>
+
+                <p>
+
+                    No.
+
+                    El NONG es una sustitución local.
+
+                    Cada jugador debe tener y configurar
+                    su propia copia del audio.
+
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    ❌ "Importé el MP3 pero no aparece"
+                </summary>
+
+                <p>
+
+                    Comprueba que el archivo sea compatible
+                    y que Jukebox haya terminado de importarlo.
+
+                    También puedes reiniciar Geometry Dash
+                    si el archivo no aparece inmediatamente.
+
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    ❌ "¿Puedo poner el MP3 directamente en esta web?"
+                </summary>
+
+                <p>
+
+                    La web puede explicar cómo configurar el
+                    NONG, pero no es necesario distribuir el
+                    audio desde aquí.
+
+                    Es mejor que cada usuario obtenga el audio
+                    desde una fuente que tenga autorización para
+                    ofrecerlo.
+
+                </p>
+
+            </details>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FINAL
+    ========================== -->
+
+    <footer>
+
+        <p>
+            🎮 Charlie's Inferno — Geometry Dash Level
+        </p>
+
+        <br>
+
+        <p>
+            Esta página es un proyecto personal de la comunidad.
+        </p>
+
+    </footer>
+
+
+</body>
+</html>
